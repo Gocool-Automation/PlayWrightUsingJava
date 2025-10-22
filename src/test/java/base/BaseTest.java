@@ -32,22 +32,29 @@ public class BaseTest {
         playwright = Playwright.create();
         browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false).setSlowMo(1000));
         page = browser.newPage();
-        page.setDefaultTimeout(5000);
+        page.setDefaultTimeout(15000);
     }
 
     @AfterMethod
-    public void tearDown (ITestResult result) {
-        if(result.getStatus() == ITestResult.FAILURE) {
+    public void tearDown(ITestResult result) {
+        if (result.getStatus() == ITestResult.FAILURE) {
             test.fail(result.getThrowable());
-            String screenshotPath = ScreenshotUtil.takeScreenshot(page,result.getName());
-            test.addScreenCaptureFromPath(screenshotPath,"Screenshots");
+            String screenshotPath = ScreenshotUtil.takeScreenshot(page, result.getName());
+            System.out.println("Screenshot Path = " + screenshotPath);
+
+            String projectPath = System.getProperty("user.dir");
+
+            String absolutePath = projectPath + "/" + screenshotPath;
+            System.out.println("Absolute Path = " + absolutePath);
+
+            test.addScreenCaptureFromPath(absolutePath, "screenshot");
         } else if (result.getStatus() == ITestResult.SUCCESS) {
             test.pass("Test Passed");
         } else {
             test.skip("Test Skipped");
         }
         extent.flush();
-        if(browser != null) browser.close();
-        if(playwright != null) playwright.close();
+        if (browser != null) browser.close();
+        if (playwright != null) playwright.close();
     }
 }

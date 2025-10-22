@@ -20,11 +20,11 @@ public class LoginPage {
         page.navigate("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
     }
 
-    public void enterUserName (String username) {
+    public void enterUserName(String username) {
         page.fill(userNameTxtBox, username);
     }
 
-    public void enterPassword (String password) {
+    public void enterPassword(String password) {
         page.fill(passwordTxtBox, password);
     }
 
