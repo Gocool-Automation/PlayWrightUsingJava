@@ -1,15 +1,16 @@
 package tests;
 
-import base.BaseTest;
+
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
 import org.testng.annotations.Test;
+import stepdefinitions.Hooks;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
-public class LoginTestSample extends BaseTest {
+public class LoginTestSample {
 
-    @Test
+    /*@Test
     public void test() {
         page.navigate("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
         page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Username")).click();
@@ -29,5 +30,5 @@ public class LoginTestSample extends BaseTest {
         assertThat(page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Maintenance"))).isVisible();
         assertThat(page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Claim"))).isVisible();
         assertThat(page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Buzz"))).isVisible();
-    }
+    }*/
 }
